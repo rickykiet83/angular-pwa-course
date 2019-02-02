@@ -16,10 +16,11 @@ app.use(bodyParser.json());
 app.route('/api/lessons')
     .get(readAllLessons);
 
+const port = process.env.port || 9000;
 
 // launch an HTTP Server
-const httpServer = app.listen(9000, () => {
-    console.log("HTTP Server running at http://localhost:" + httpServer.address().port);
+const httpServer = app.listen(port, () => {
+    console.log("HTTP Server running at http://localhost:" + port);
 });
 
 
