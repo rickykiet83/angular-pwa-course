@@ -3,11 +3,6 @@
 
 This repository contains the code of the [Angular PWA Course - Build the future of the Web Today](https://angular-university.io/course/angular-pwa-course).
 
-This course repository is updated to Angular 4, and there is a  package-lock.json file available, for avoiding semantic versioning installation issues.
-
-![Angular PWA Course - Build the future of the Web Today](https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-pwa-course.png)
-
-
 # Installation pre-requisites
 
 IMPORTANT: Please use NPM 5 or above, to make sure the package-lock.json is used.
@@ -47,7 +42,7 @@ NPM 5 or above has the big advantage that if you use it you will be installing t
 
 This should take a couple of minutes. If there are issues, please post the complete error message in the Questions section of the course.
 
-# To Run the Development Backend Server
+#  Running the Development Backend Server
 
 We can start the sample application backend with the following command:
 
@@ -55,17 +50,41 @@ We can start the sample application backend with the following command:
 
 This is a small Node REST API server.
 
-# To run the Development UI Server
+# Running the Development UI Server
 
 To run the frontend part of our code, we will use the Angular CLI:
 
     npm start 
 
-The application is visible at port 4200, but you need to use HTTPS - [https://localhost:4200](https://localhost:4200)
+The development application is visible at port 4200  - [http://localhost:4200](http://localhost:4200), but in this course we will be mostly running the application production mode.
 
-This application uses a self-signed certificate, so you will need to accept it using the browser. If you are using Chrome, you will need to click Advanced and then choose "Proceed to localhost".
+# Running the application in production mode, with the service worker active
 
-# Important 
+In order to build the application in production mode, we use this command:
+
+    ng build --prod
+    
+This is going to output the production application in the dist folder, with the service worker active. To run the application we will need an HTTP server, so let's install http-server:
+
+    npm install -g http-server
+    
+We can then run the production application by doing:
+
+    cd dist
+    http-server -c-1 .
+    
+And now the production application should be available at port 8080 - [http://localhost:8080](http://localhost:8080). 
+
+> Note: Please check in the server startup log to see what port is http-server  using. By default its 8080, but it that port is busy then 8081 will used, etc.
+
+# Shortcut command for building the application in production mode
+
+We will be building the application often in production mode. This shortcut command will build the application in production mode and start http-server all in one go:
+
+    npm run start:prod 
+
+
+# Getting the code at the beginning of each section
 
 This repository has multiple branches, have a look at the beginning of each section to see the name of the branch.
 
@@ -73,11 +92,11 @@ At certain points along the course, you will be asked to checkout other remote b
 
     git branch -a
 
-  The remote branches have their starting in origin, such as for example section-1.
+  The remote branches have their starting in origin, such as for example 1-notifications.
 
 We can checkout the remote branch and start tracking it with a local branch that has the same name, by using the following command:
 
-      git checkout -b section-1 origin/section-1
+      git checkout -b 1-notifications origin/1-notifications
 
 It's also possible to download a ZIP file for a given branch,  using the branch dropdown on this page on the top left, and then selecting the Clone or Download / Download as ZIP button.
 
